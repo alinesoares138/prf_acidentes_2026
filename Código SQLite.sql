@@ -1,4 +1,14 @@
 --------Limpeza  e Tratamento de dados
+--Padronização dos campos
+SELECT 
+	CAST(veiculos AS INT) AS qt_veiculos,
+    CAST(pessoas AS INT) AS qt_pessoas_envolvidas,
+    CAST(feridos_leves AS INT) AS qt_feridos_leves,
+    CAST(feridos AS INT) AS qt_total_feridos,
+    CAST(feridos_graves AS INT) AS qt_feridos_graves,
+    CAST(ilesos AS INT) AS qt_ilesos,
+    CAST(ignorados AS INT) AS qt_ignorados 
+FROM datatran2026 d 
 
 --Verificação de dados zerados / nulos
 SELECT COUNT(*)
@@ -97,13 +107,13 @@ SELECT DISTINCT
     UPPER(tipo_pista) AS tipo_pista,
 
     -- 5. DADOS QUANTITATIVOS
-    veiculos,
-    pessoas,
-    feridos,
-    feridos_leves,
-    feridos_graves,
-    ilesos,
-    ignorados
+   	CAST(veiculos AS INT) AS qt_veiculos,
+    CAST(pessoas AS INT) AS qt_pessoas_envolvidas,
+    CAST(feridos_leves AS INT) AS qt_feridos_leves,
+    CAST(feridos AS INT) AS qt_total_feridos,
+    CAST(feridos_graves AS INT) AS qt_feridos_graves,
+    CAST(ilesos AS INT) AS qt_ilesos,
+    CAST(ignorados AS INT) AS qt_ignorados 
 
 FROM datatran2026 d;
 
