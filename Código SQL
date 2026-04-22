@@ -1,20 +1,29 @@
 Tratamento de dados
 
--Tratando o campo tipo_acidente:
 SELECT DISTINCT 
-	d.tipo_acidente ,
-	CASE 
+	id
+	,data_inversa AS data_inversa
+	,horario
+	,UPPER(dia_semana) AS dia_semana
+	,uf 
+	,br
+	,km
+	,municipio
+	,UPPER(causa_acidente) AS causa_acidente
+	,CASE 
         WHEN tipo_acidente LIKE '%Colis%' OR tipo_acidente LIKE '%Atropelamento%' OR tipo_acidente = 'Engavetamento' THEN 'ACIDENTE'
         WHEN tipo_acidente IN ('Tombamento', 'Capotamento') THEN 'TOMBAMENTO'
         WHEN tipo_acidente IN ('Incêndio', 'Derramamento de carga', 'Queda de ocupante de veículo') OR tipo_acidente LIKE '%objeto%' THEN 'AVARIA'
         WHEN tipo_acidente LIKE '%Roubo%' THEN 'ROUBO' -- Caso adicione dados externos futuramente
         ELSE 'OUTROS'
-    END  as agrupamento_acidente,
-	CASE
+    END AS agrupamento_acidente
+	,CASE
 		WHEN classificacao_acidente IN('NA','Sem V�timas') THEN NULL
 		WHEN classificacao_acidente = 'Com V�timas Feridas' THEN 1
 		WHEN classificacao_acidente = 'Com V�timas Fatais' THEN 2
 		ELSE classificacao_acidente 
-	END AS classificacao_acidente_corrigido,
+	END AS classificacao_acidente_corrigido
+	,UPPER(d.fase_dia) AS fase_do_dia
+	,UPPER(d.sentido_via) AS sentido_da_via 
 FROM
 	datatran2026 d
