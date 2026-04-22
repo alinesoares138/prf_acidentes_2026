@@ -106,3 +106,6 @@ SELECT DISTINCT
     ignorados
 
 FROM datatran2026 d;
+
+--Looker Studio 
+--https://datastudio.google.com/u/0/reporting/28767fae-7217-44f8-a8b2-d11ab6a48d57/page/qX4vF/edit
