@@ -1,4 +1,7 @@
 
+#Fonte de dados
+Site público da Polícia Rodoviária Federal: https://www.gov.br/prf/pt-br/acesso-a-informacao/dados-abertos/dados-abertos-da-prf
+    
 #Tratamento de dados
 
 SELECT DISTINCT 
