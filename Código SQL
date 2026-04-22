@@ -9,6 +9,12 @@ SELECT DISTINCT
         WHEN tipo_acidente IN ('Incêndio', 'Derramamento de carga', 'Queda de ocupante de veículo') OR tipo_acidente LIKE '%objeto%' THEN 'AVARIA'
         WHEN tipo_acidente LIKE '%Roubo%' THEN 'ROUBO' -- Caso adicione dados externos futuramente
         ELSE 'OUTROS'
-    END  as agrupamento
+    END  as agrupamento_acidente,
+	CASE
+		WHEN classificacao_acidente IN('NA','Sem V�timas') THEN NULL
+		WHEN classificacao_acidente = 'Com V�timas Feridas' THEN 1
+		WHEN classificacao_acidente = 'Com V�timas Fatais' THEN 2
+		ELSE classificacao_acidente 
+	END AS classificacao_acidente_corrigido,
 FROM
 	datatran2026 d
